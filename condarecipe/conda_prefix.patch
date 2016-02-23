@@ -1,0 +1,19 @@
+diff --git Makefile Makefile
+index 7ae0883..05bda16 100644
+--- Makefile
++++ Makefile
+@@ -1,11 +1,11 @@
+-PREFIX = ~/.micropython/lib
++MPLIBDIR = ${PREFIX}/lib
+ 
+ all:
+ 
+ # Installs all modules to a lib location, for development testing
+-CMD="find . -maxdepth 1 -mindepth 1 \( -name '*.py' -not -name 'test_*' -not -name 'setup.py' \) -or \( -type d -not -name 'dist' -not -name '*.egg-info' -not -name '__pycache__' \)| xargs --no-run-if-empty cp -r -t $(PREFIX)"
++CMD="find . -maxdepth 1 -mindepth 1 \( -name '*.py' -not -name 'test_*' -not -name 'setup.py' \) -or \( -type d -not -name 'dist' -not -name '*.egg-info' -not -name '__pycache__' \)| xargs --no-run-if-empty cp -r -t $(MPLIBDIR)"
+ install:
+-	@mkdir -p $(PREFIX)
++	@mkdir -p $(MPLIBDIR)
+ 	@if [ -n "$(MOD)" ]; then \
+ 	    (cd $(MOD); sh -c $(CMD)); \
+ 	else \

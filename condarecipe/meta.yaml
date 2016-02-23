@@ -1,0 +1,11 @@
+package:
+  name: micropython-lib
+  version: {{ environ.get('GIT_DESCRIBE_TAG','') }}
+
+build:
+  number: {{ environ.get('GIT_DESCRIBE_NUMBER', 0) }}
+
+source:
+  git_url: ..
+  patches:
+    - conda_prefix.patch # Install to conda prefix, not ~/.micropython/lib
